@@ -1,25 +1,26 @@
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalTime; 
+import java.time.LocalDate; 
+import java.time.format.DateTimeFormatter;
 class Cita {
     private String paciente;
     private LocalDate fecha;
     private LocalTime hora;
 
-    public Cita(String paciente, LocalDate fecha, LocalTime hora) {
+    public Cita(String paciente, String fecha, String hora) {
         this.paciente = paciente;
-        this.fecha = fecha;
-        this.hora = hora;
+        this.fecha = LocalDate.parse(fecha);
+        this.hora = LocalTime.parse(hora);
     }
 
     public String getPaciente() {
         return paciente;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public String getFecha() {
+        return fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
-    public LocalTime getHora() {
-        return hora;
+    public String getHora() {
+        return hora.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 }
