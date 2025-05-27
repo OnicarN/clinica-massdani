@@ -8,7 +8,8 @@ class Cita {
 
     public Cita(String paciente, String fecha, String hora) {
         this.paciente = paciente;
-        this.fecha = LocalDate.parse(fecha);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.fecha = LocalDate.parse(fecha,formatter);
         this.hora = LocalTime.parse(hora);
     }
 
